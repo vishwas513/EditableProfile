@@ -22,6 +22,16 @@
 		E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38224707D05003C6C8B /* StaticStrings.swift */; };
 		E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38424707E04003C6C8B /* UIElementSizes.swift */; };
 		E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */; };
+		E9B7C38D247088B6003C6C8B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38C247088B6003C6C8B /* NetworkManager.swift */; };
+		E9B7C39724708998003C6C8B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38F24708997003C6C8B /* Location.swift */; };
+		E9B7C39824708998003C6C8B /* MartialStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39024708997003C6C8B /* MartialStatus.swift */; };
+		E9B7C39924708998003C6C8B /* Religion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39124708998003C6C8B /* Religion.swift */; };
+		E9B7C39A24708998003C6C8B /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39224708998003C6C8B /* LocationList.swift */; };
+		E9B7C39B24708998003C6C8B /* SingleChoiceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39324708998003C6C8B /* SingleChoiceAttribute.swift */; };
+		E9B7C39C24708998003C6C8B /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39424708998003C6C8B /* Ethnicity.swift */; };
+		E9B7C39D24708998003C6C8B /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39524708998003C6C8B /* Figure.swift */; };
+		E9B7C39E24708998003C6C8B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39624708998003C6C8B /* Gender.swift */; };
+		E9B7C3A024708F45003C6C8B /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C39F24708F45003C6C8B /* ProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,16 @@
 		E9B7C38224707D05003C6C8B /* StaticStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStrings.swift; sourceTree = "<group>"; };
 		E9B7C38424707E04003C6C8B /* UIElementSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementSizes.swift; sourceTree = "<group>"; };
 		E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableOptionCell.swift; sourceTree = "<group>"; };
+		E9B7C38C247088B6003C6C8B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E9B7C38F24708997003C6C8B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E9B7C39024708997003C6C8B /* MartialStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MartialStatus.swift; sourceTree = "<group>"; };
+		E9B7C39124708998003C6C8B /* Religion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Religion.swift; sourceTree = "<group>"; };
+		E9B7C39224708998003C6C8B /* LocationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
+		E9B7C39324708998003C6C8B /* SingleChoiceAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleChoiceAttribute.swift; sourceTree = "<group>"; };
+		E9B7C39424708998003C6C8B /* Ethnicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
+		E9B7C39524708998003C6C8B /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		E9B7C39624708998003C6C8B /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		E9B7C39F24708F45003C6C8B /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +115,8 @@
 		E9AC05F42470706700B8A839 /* Editable Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E9B7C38E24708944003C6C8B /* Models */,
+				E9B7C38B2470889A003C6C8B /* Managers */,
 				E9B7C3862470809B003C6C8B /* CustomCells */,
 				E9B7C37D247076F3003C6C8B /* Extensions */,
 				E9B7C37A2470759A003C6C8B /* ViewModels */,
@@ -169,6 +191,30 @@
 				E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */,
 			);
 			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		E9B7C38B2470889A003C6C8B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C38C247088B6003C6C8B /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E9B7C38E24708944003C6C8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C39424708998003C6C8B /* Ethnicity.swift */,
+				E9B7C39524708998003C6C8B /* Figure.swift */,
+				E9B7C39624708998003C6C8B /* Gender.swift */,
+				E9B7C38F24708997003C6C8B /* Location.swift */,
+				E9B7C39224708998003C6C8B /* LocationList.swift */,
+				E9B7C39024708997003C6C8B /* MartialStatus.swift */,
+				E9B7C39124708998003C6C8B /* Religion.swift */,
+				E9B7C39324708998003C6C8B /* SingleChoiceAttribute.swift */,
+				E9B7C39F24708F45003C6C8B /* ProfileModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,15 +319,25 @@
 			files = (
 				E9B7C37F24707705003C6C8B /* UIView.swift in Sources */,
 				E9B7C376247074EF003C6C8B /* EditingView.swift in Sources */,
+				E9B7C39924708998003C6C8B /* Religion.swift in Sources */,
+				E9B7C3A024708F45003C6C8B /* ProfileModel.swift in Sources */,
 				E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */,
+				E9B7C38D247088B6003C6C8B /* NetworkManager.swift in Sources */,
 				E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */,
+				E9B7C39E24708998003C6C8B /* Gender.swift in Sources */,
 				E9B7C37924707556003C6C8B /* TagSystem.swift in Sources */,
+				E9B7C39724708998003C6C8B /* Location.swift in Sources */,
 				E9AC05FA2470706700B8A839 /* ProfileController.swift in Sources */,
+				E9B7C39B24708998003C6C8B /* SingleChoiceAttribute.swift in Sources */,
 				E9AC05F62470706700B8A839 /* AppDelegate.swift in Sources */,
+				E9B7C39A24708998003C6C8B /* LocationList.swift in Sources */,
 				E9AC05F82470706700B8A839 /* SceneDelegate.swift in Sources */,
+				E9B7C39D24708998003C6C8B /* Figure.swift in Sources */,
 				E9B7C373247073A9003C6C8B /* ProfileView.swift in Sources */,
+				E9B7C39C24708998003C6C8B /* Ethnicity.swift in Sources */,
 				E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */,
 				E9B7C38124707770003C6C8B /* Enums.swift in Sources */,
+				E9B7C39824708998003C6C8B /* MartialStatus.swift in Sources */,
 				E9B7C37C247075B7003C6C8B /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

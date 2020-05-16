@@ -17,3 +17,8 @@ enum Endpoint {
     case location
     case profile
 }
+
+enum HttpMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
