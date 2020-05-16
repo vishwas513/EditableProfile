@@ -39,14 +39,6 @@ final class EditableOptionCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    init(editable: Bool) {
-        self.init()
-        if !editable {
-            editButton.isHidden = true
-            editButton.isEnabled = false
-        }
         setupView()
     }
     
@@ -56,8 +48,9 @@ final class EditableOptionCell: UITableViewCell {
     
     func setupView() {
         addSubviews(views: fieldPlaceHolderLabel, fieldLabel, editButton)
-        
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        
+        setupConstraints()
     }
     
     func setupConstraints() {

@@ -11,11 +11,21 @@ import UIKit
 
 extension ProfileView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StaticStrings.editableOptionCellId) as? EditableOptionCell else {
+            return UITableViewCell()
+        }
+        cell.fieldLabel.text = "default label"
+        cell.fieldPlaceHolderLabel.text = "default text"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIElementSizes.heightOfCell
     }
 }
 
@@ -57,7 +67,15 @@ class ProfileView: UIView {
     func setupView() {
         backgroundColor = .white
         addSubviews(views: pictureManagementView, pictureEditButton, editableOptionsTableView)
+        setupTableView()
         setupConstraints()
+    }
+    
+    func setupTableView() {
+        editableOptionsTableView.dataSource = self
+        editableOptionsTableView.delegate = self
+        editableOptionsTableView.separatorStyle = .none
+        editableOptionsTableView.register(EditableOptionCell.self, forCellReuseIdentifier: StaticStrings.editableOptionCellId)
     }
 
     func setupConstraints() {

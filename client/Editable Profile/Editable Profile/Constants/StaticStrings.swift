@@ -10,4 +10,5 @@ import Foundation
 
 struct StaticStrings {
     static let editButtonText = "Edit your picture"
+    static let editableOptionCellId = "cell"
 }

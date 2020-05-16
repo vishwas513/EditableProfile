@@ -13,4 +13,5 @@ struct UIElementSizes {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
     static let standardPadding: CGFloat = 10.0
+    static let heightOfCell: CGFloat = 100.0
 }
