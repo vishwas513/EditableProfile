@@ -57,7 +57,7 @@ class EditingView: UIView {
     }
     
     @objc func editButtonTapped(sender: UIButton) {
-        var payload = [String: Something]()
+        var payload = [String: TypeOfField]()
         switch sender.tag {
         case TagSystem.displayNameTag:
             payload = ["Field": .displayName]

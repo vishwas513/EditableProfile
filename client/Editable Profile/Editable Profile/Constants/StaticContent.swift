@@ -11,5 +11,5 @@ import Foundation
 struct StaticContent {
     static let editButtonText = "Edit your picture"
     static let editableOptionCellId = "cell"
-    static let
+    static let numberOfEditableOptions: Int = 12
 }

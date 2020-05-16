@@ -13,15 +13,20 @@ final class ProfileViewModel {
     
     weak var singleAttributeChoices: SingleChoiceAttribute?
     var locationList: [Location]?
-    let networkManager = NetworkManager.shared
+    var networkManager = NetworkManager.shared
+    var profileView: ProfileView?
+    var profile: ProfileModel?
+    
+    var namesOfFieldsInOrder = [("Display Name", TypeOfField.displayName), ("Real Name",TypeOfField.realName), ("Gender",TypeOfField.gender), ("Birthday", TypeOfField.birthday), ("Religion", TypeOfField.religion), ("Ethnicity",TypeOfField.ethnicity), ("Height",TypeOfField.height), ("Figure",TypeOfField.figure), ("Marital Status", TypeOfField.maritalStatus), ("Occupation", TypeOfField.occupation),("Location", TypeOfField.location), ("About Me",TypeOfField.aboutMe)]
+    
     
     func initData() {
-        getProfile()
-        retriveChoices()
-        getLocations()
+        retrieveProfile()
+        retrieveChoices()
+        retrieveLocations()
     }
     
-    func getChoices(field: Something) -> [String] {
+    func getChoices(field: TypeOfField) -> [String] {
         var result = [String]()
         guard let choices = singleAttributeChoices else { return [] }
         switch field {
@@ -75,7 +80,7 @@ final class ProfileViewModel {
         return profileModel
     }
     
-    func retriveChoices() {
+    func retrieveChoices() {
         let urlString = "http://localhost:3000/single_choice_attributes"
         if let url = URL(string: urlString) {
             networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .singleChoiceAttributes), completion: {
@@ -94,7 +99,7 @@ final class ProfileViewModel {
         }
     }
     
-    func getLocations() {
+    func retrieveLocations() {
         let urlString = "http://localhost:3000/cities"
         if let url = URL(string: urlString) {
             networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .location), completion: {
@@ -138,7 +143,7 @@ final class ProfileViewModel {
         return resultString
     }
     
-    func getProfile() {
+    func retrieveProfile() {
         let urlString = "http://localhost:3000/profile"
         if let url = URL(string: urlString) {
             networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .profile), completion: {
@@ -146,10 +151,13 @@ final class ProfileViewModel {
                 
                 switch result {
                 case .success(let data):
-                    print(data)
                     if let strongSelf = self {
                         if let profileObject = strongSelf.parseProfile(data: data) {
-                            //  CoreDataSaveOps.shared.saveProfile(profile: profileObject)
+                            strongSelf.profile = profileObject
+                            
+                            DispatchQueue.main.async {
+                                strongSelf.profileView?.editableOptionsTableView.reloadData()
+                            }
                         }
                     }
                 case .failure(let error):
@@ -157,5 +165,39 @@ final class ProfileViewModel {
                 }
             })
         }
+    }
+    
+    func getFieldValueFromIndex(fieldType: TypeOfField) -> String {
+        guard let profile = self.profile else { return "" }
+        var valueForField = ""
+        
+        switch fieldType {
+        case .displayName:
+            valueForField = profile.displayName
+        case .realName:
+            valueForField = profile.realName
+        case .gender:
+            valueForField = profile.gender
+        case .birthday:
+            valueForField = profile.birthday
+        case .ethnicity:
+            valueForField = profile.ethnicity
+        case .religion:
+            valueForField = profile.religion
+        case .figure:
+            valueForField = profile.figure
+        case .height:
+            valueForField = processHeight(height: profile.height) ?? ""
+        case .location:
+            valueForField = profile.location
+        case .maritalStatus:
+            valueForField = profile.maritalStatus
+        case .occupation:
+            valueForField = profile.occupation
+        case .aboutMe:
+            valueForField = profile.aboutMe
+        }
+     
+        return valueForField
     }
 }

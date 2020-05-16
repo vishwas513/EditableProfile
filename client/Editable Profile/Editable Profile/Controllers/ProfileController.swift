@@ -16,7 +16,7 @@ class ProfileController: UIViewController {
     override func loadView() {
         profileView = ProfileView()
         profileView?.viewModel = viewModel
-        
+        viewModel.profileView = profileView
         view = profileView
     }
     

@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Something {
-    case displayName, realName, gender, ethnicity, religion, height, figure, maritalStatus, occupation, aboutMe
+enum TypeOfField {
+    case displayName, realName, birthday, gender, ethnicity, religion, height, figure, maritalStatus, occupation, aboutMe, location
 }
 
 enum Endpoint {

@@ -19,7 +19,7 @@
 		E9B7C37C247075B7003C6C8B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C37B247075B7003C6C8B /* ProfileViewModel.swift */; };
 		E9B7C37F24707705003C6C8B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C37E24707705003C6C8B /* UIView.swift */; };
 		E9B7C38124707770003C6C8B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38024707770003C6C8B /* Enums.swift */; };
-		E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38224707D05003C6C8B /* StaticStrings.swift */; };
+		E9B7C38324707D05003C6C8B /* StaticContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38224707D05003C6C8B /* StaticContent.swift */; };
 		E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38424707E04003C6C8B /* UIElementSizes.swift */; };
 		E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */; };
 		E9B7C38D247088B6003C6C8B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38C247088B6003C6C8B /* NetworkManager.swift */; };
@@ -61,7 +61,7 @@
 		E9B7C37B247075B7003C6C8B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E9B7C37E24707705003C6C8B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E9B7C38024707770003C6C8B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		E9B7C38224707D05003C6C8B /* StaticStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStrings.swift; sourceTree = "<group>"; };
+		E9B7C38224707D05003C6C8B /* StaticContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContent.swift; sourceTree = "<group>"; };
 		E9B7C38424707E04003C6C8B /* UIElementSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementSizes.swift; sourceTree = "<group>"; };
 		E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableOptionCell.swift; sourceTree = "<group>"; };
 		E9B7C38C247088B6003C6C8B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 			children = (
 				E9B7C37824707556003C6C8B /* TagSystem.swift */,
 				E9B7C38024707770003C6C8B /* Enums.swift */,
-				E9B7C38224707D05003C6C8B /* StaticStrings.swift */,
+				E9B7C38224707D05003C6C8B /* StaticContent.swift */,
 				E9B7C38424707E04003C6C8B /* UIElementSizes.swift */,
 			);
 			path = Constants;
@@ -323,7 +323,7 @@
 				E9B7C3A024708F45003C6C8B /* ProfileModel.swift in Sources */,
 				E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */,
 				E9B7C38D247088B6003C6C8B /* NetworkManager.swift in Sources */,
-				E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */,
+				E9B7C38324707D05003C6C8B /* StaticContent.swift in Sources */,
 				E9B7C39E24708998003C6C8B /* Gender.swift in Sources */,
 				E9B7C37924707556003C6C8B /* TagSystem.swift in Sources */,
 				E9B7C39724708998003C6C8B /* Location.swift in Sources */,
