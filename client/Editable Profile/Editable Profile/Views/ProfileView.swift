@@ -8,19 +8,23 @@
 
 import Foundation
 import UIKit
+import os.log
 
 extension ProfileView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return StaticContent.numberOfEditableOptions
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StaticStrings.editableOptionCellId) as? EditableOptionCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StaticContent.editableOptionCellId) as? EditableOptionCell else {
             return UITableViewCell()
         }
-        cell.fieldLabel.text = "default label"
-        cell.fieldPlaceHolderLabel.text = "default text"
         
+        if let itemAtIndex = viewModel?.namesOfFieldsInOrder[indexPath.row] {
+            cell.fieldPlaceHolderLabel.text = itemAtIndex.0
+            cell.fieldLabel.text = viewModel?.getFieldValueFromIndex(fieldType: itemAtIndex.1)
+        }
+       
         return cell
     }
     
@@ -42,7 +46,7 @@ class ProfileView: UIView {
     var pictureEditButton: UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(StaticStrings.editButtonText, for: .normal)
+        button.setTitle(StaticContent.editButtonText, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.gray.cgColor
@@ -62,7 +66,7 @@ class ProfileView: UIView {
     
     init(viewModel: ProfileViewModel) {
         self.init()
-      //  self.viewModel = viewModel
+        //  self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
@@ -80,9 +84,9 @@ class ProfileView: UIView {
         editableOptionsTableView.dataSource = self
         editableOptionsTableView.delegate = self
         editableOptionsTableView.separatorStyle = .none
-        editableOptionsTableView.register(EditableOptionCell.self, forCellReuseIdentifier: StaticStrings.editableOptionCellId)
+        editableOptionsTableView.register(EditableOptionCell.self, forCellReuseIdentifier: StaticContent.editableOptionCellId)
     }
-
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             pictureManagementView.topAnchor.constraint(equalTo: topAnchor, constant: 2 * UIElementSizes.standardPadding),
