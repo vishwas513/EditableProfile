@@ -19,14 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         let navigationController = UINavigationController(rootViewController: ProfileController())
-        navigationController.navigationBar.backgroundColor = .black
+        
+        navigationController.navigationBar.barTintColor = .black
+        navigationController.navigationBar.isTranslucent = false
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.windowScene = scene
         window?.rootViewController = navigationController
-        
-        
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
