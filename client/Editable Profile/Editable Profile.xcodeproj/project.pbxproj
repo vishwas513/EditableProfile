@@ -13,6 +13,15 @@
 		E9AC05FF2470706800B8A839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AC05FE2470706800B8A839 /* Assets.xcassets */; };
 		E9AC06022470706800B8A839 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AC06002470706800B8A839 /* LaunchScreen.storyboard */; };
 		E9AC060D2470706900B8A839 /* Editable_ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC060C2470706900B8A839 /* Editable_ProfileTests.swift */; };
+		E9B7C373247073A9003C6C8B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C372247073A9003C6C8B /* ProfileView.swift */; };
+		E9B7C376247074EF003C6C8B /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C375247074EF003C6C8B /* EditingView.swift */; };
+		E9B7C37924707556003C6C8B /* TagSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C37824707556003C6C8B /* TagSystem.swift */; };
+		E9B7C37C247075B7003C6C8B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C37B247075B7003C6C8B /* ProfileViewModel.swift */; };
+		E9B7C37F24707705003C6C8B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C37E24707705003C6C8B /* UIView.swift */; };
+		E9B7C38124707770003C6C8B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38024707770003C6C8B /* Enums.swift */; };
+		E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38224707D05003C6C8B /* StaticStrings.swift */; };
+		E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C38424707E04003C6C8B /* UIElementSizes.swift */; };
+		E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,15 @@
 		E9AC06082470706900B8A839 /* Editable ProfileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Editable ProfileTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AC060C2470706900B8A839 /* Editable_ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editable_ProfileTests.swift; sourceTree = "<group>"; };
 		E9AC060E2470706900B8A839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9B7C372247073A9003C6C8B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E9B7C375247074EF003C6C8B /* EditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingView.swift; sourceTree = "<group>"; };
+		E9B7C37824707556003C6C8B /* TagSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSystem.swift; sourceTree = "<group>"; };
+		E9B7C37B247075B7003C6C8B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		E9B7C37E24707705003C6C8B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E9B7C38024707770003C6C8B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		E9B7C38224707D05003C6C8B /* StaticStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStrings.swift; sourceTree = "<group>"; };
+		E9B7C38424707E04003C6C8B /* UIElementSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementSizes.swift; sourceTree = "<group>"; };
+		E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableOptionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +95,14 @@
 		E9AC05F42470706700B8A839 /* Editable Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E9B7C3862470809B003C6C8B /* CustomCells */,
+				E9B7C37D247076F3003C6C8B /* Extensions */,
+				E9B7C37A2470759A003C6C8B /* ViewModels */,
+				E9B7C37724707530003C6C8B /* Constants */,
+				E9B7C374247073AE003C6C8B /* Views */,
+				E9B7C371247072E9003C6C8B /* Controllers */,
 				E9AC05F52470706700B8A839 /* AppDelegate.swift */,
 				E9AC05F72470706700B8A839 /* SceneDelegate.swift */,
-				E9AC05F92470706700B8A839 /* ProfileController.swift */,
 				E9AC05FE2470706800B8A839 /* Assets.xcassets */,
 				E9AC06002470706800B8A839 /* LaunchScreen.storyboard */,
 				E9AC06032470706800B8A839 /* Info.plist */,
@@ -94,6 +117,58 @@
 				E9AC060E2470706900B8A839 /* Info.plist */,
 			);
 			path = "Editable ProfileTests";
+			sourceTree = "<group>";
+		};
+		E9B7C371247072E9003C6C8B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9AC05F92470706700B8A839 /* ProfileController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E9B7C374247073AE003C6C8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C372247073A9003C6C8B /* ProfileView.swift */,
+				E9B7C375247074EF003C6C8B /* EditingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E9B7C37724707530003C6C8B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C37824707556003C6C8B /* TagSystem.swift */,
+				E9B7C38024707770003C6C8B /* Enums.swift */,
+				E9B7C38224707D05003C6C8B /* StaticStrings.swift */,
+				E9B7C38424707E04003C6C8B /* UIElementSizes.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E9B7C37A2470759A003C6C8B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C37B247075B7003C6C8B /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E9B7C37D247076F3003C6C8B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C37E24707705003C6C8B /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9B7C3862470809B003C6C8B /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,9 +271,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B7C37F24707705003C6C8B /* UIView.swift in Sources */,
+				E9B7C376247074EF003C6C8B /* EditingView.swift in Sources */,
+				E9B7C388247080DC003C6C8B /* EditableOptionCell.swift in Sources */,
+				E9B7C38324707D05003C6C8B /* StaticStrings.swift in Sources */,
+				E9B7C37924707556003C6C8B /* TagSystem.swift in Sources */,
 				E9AC05FA2470706700B8A839 /* ProfileController.swift in Sources */,
 				E9AC05F62470706700B8A839 /* AppDelegate.swift in Sources */,
 				E9AC05F82470706700B8A839 /* SceneDelegate.swift in Sources */,
+				E9B7C373247073A9003C6C8B /* ProfileView.swift in Sources */,
+				E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */,
+				E9B7C38124707770003C6C8B /* Enums.swift in Sources */,
+				E9B7C37C247075B7003C6C8B /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
