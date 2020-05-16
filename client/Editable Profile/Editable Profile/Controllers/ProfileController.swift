@@ -11,15 +11,20 @@ import UIKit
 class ProfileController: UIViewController {
 
     var profileView: ProfileView?
+    var viewModel = ProfileViewModel()
     
     override func loadView() {
         profileView = ProfileView()
+        profileView?.viewModel = viewModel
+        
         view = profileView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        profileView?.setupView()
+        viewModel.initData()
     }
 
 

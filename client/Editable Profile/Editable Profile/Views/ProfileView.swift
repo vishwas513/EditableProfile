@@ -30,7 +30,7 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
 }
 
 class ProfileView: UIView {
-  //  weak var viewModel: ViewModel?
+    weak var viewModel: ProfileViewModel?
     
     var pictureManagementView: UIView = {
         var view = UIView()
@@ -58,6 +58,11 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+    }
+    
+    init(viewModel: ProfileViewModel) {
+        self.init()
+      //  self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
