@@ -23,7 +23,15 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
         if let itemAtIndex = viewModel?.namesOfFieldsInOrder[indexPath.row] {
             cell.fieldPlaceHolderLabel.text = itemAtIndex.0
             cell.fieldLabel.text = viewModel?.getFieldValueFromIndex(fieldType: itemAtIndex.1)
+            
+            if itemAtIndex.1 == .birthday || itemAtIndex.1 == .height {
+                cell.editButton.isHidden = true
+            } else {
+                cell.editButton.isHidden = false
+            }
         }
+        
+       
        
         return cell
     }
