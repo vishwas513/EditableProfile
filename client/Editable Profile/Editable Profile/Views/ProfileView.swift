@@ -45,8 +45,8 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
 class ProfileView: UIView {
     weak var viewModel: ProfileViewModel?
     
-    var pictureManagementView: UIView = {
-        var view = UIView()
+    var pictureManagementView: UIImageView = {
+        var view = UIImageView()
         view.backgroundColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
