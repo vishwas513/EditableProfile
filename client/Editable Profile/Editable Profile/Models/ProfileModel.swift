@@ -20,5 +20,7 @@ class ProfileModel: Decodable {
     var maritalStatus: String
     var occupation: String
     var aboutMe: String
-    var location: String
+    var city: String
+    var lat: String
+    var lon: String
 }

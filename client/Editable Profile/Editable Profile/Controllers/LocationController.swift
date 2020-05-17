@@ -8,8 +8,14 @@
 
 import UIKit
 
-class LocationController: UIViewController {
+@objc extension LocationController {
+    func popToProfileController() {
+        navigationController?.popViewController(animated: true)
+    }
+}
 
+class LocationController: UIViewController {
+    
     var locationView: LocationView?
     var fieldType: TypeOfField?
     var viewModel: ProfileViewModel?
@@ -32,11 +38,11 @@ class LocationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(popToProfileController), name: NSNotification.Name(rawValue: StaticContent.popFromLocationScreen), object: nil)
     }
     
-
     
-
+    
+    
 }

@@ -18,33 +18,47 @@ extension LocationView: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = autoCompleteEntries[indexPath.row]
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profie = viewModel?.profile
+        let currentSelection = autoCompleteEntries[indexPath.row]
+        profie?.city = currentSelection
+        
+        if let locationList = viewModel?.locationList, let locationObject = locationList.filter({$0.city == currentSelection}).first {
+            profie?.lat = locationObject.lat
+            profie?.lon = locationObject.lon
+        }
+        
+        viewModel?.updateProfile()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.popFromLocationScreen), object: nil)
+    }
 }
 
 extension LocationView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         locationTableView.isHidden = false
-        let substring = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-
-        searchAutocompleteEntriesWithSubstring(substring: substring)
-        return true     // not sure about this - could be false
+        if let text = textField.text  {
+            let substring = (text as NSString).replacingCharacters(in: range, with: string)
+            searchAutocompleteEntriesWithSubstring(substring: substring)
+        }
+        return true
     }
     
     func searchAutocompleteEntriesWithSubstring(substring: String)
     {
         autoCompleteEntries.removeAll(keepingCapacity: false)
         guard let list = viewModel?.locationList else { return }
-        for curString in list.map({ $0.city }) {
-            let myString:NSString! = curString as NSString
+        for currentString in list.map({ $0.city }) {
+            
+            let myString = currentString as NSString
+            let substringRange = myString.range(of: substring)
 
-            let substringRange :NSRange! = myString.range(of: substring)
-
-            if (substringRange.location  == 0)
-            {
-                autoCompleteEntries.append(curString)
+            if substringRange.location  == 0 {
+                autoCompleteEntries.append(currentString)
             }
         }
-
         locationTableView.reloadData()
     }
 }
@@ -90,12 +104,12 @@ class LocationView: UIView {
         backgroundColor = .white
         addSubviews(views: locationTextfield, locationTableView)
         
+        locationTextfield.delegate = self
         locationTableView.dataSource = self
         locationTableView.delegate = self
+        
         locationTableView.isHidden = true
-        
-        locationTextfield.delegate = self
-        
+
         setupConstraints()
     }
     
