@@ -31,6 +31,14 @@ import os.log
         navigationController?.pushViewController(selectionController, animated: true)
         profileView = nil
     }
+    
+    func editButtonTappedForLocation(notification: NSNotification) {
+        guard let recievedObject = notification.object as? [String: Any],let fieldType = recievedObject["FieldType"] as? TypeOfField else { return }
+        
+        let locationController = LocationController(fieldType: fieldType, viewModel: viewModel)
+        navigationController?.pushViewController(locationController, animated: true)
+        profileView = nil
+    }
 }
 
 class ProfileController: UIViewController {
@@ -54,6 +62,8 @@ class ProfileController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForFreeText), name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForSelection), name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForLocation), name: NSNotification.Name(rawValue: StaticContent.gotoLocationScreenNotificationName), object: nil)
         
     }
     
