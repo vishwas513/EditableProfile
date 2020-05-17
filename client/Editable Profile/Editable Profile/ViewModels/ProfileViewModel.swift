@@ -17,9 +17,6 @@ final class ProfileViewModel {
     var profileView: ProfileView?
     var profile: ProfileModel?
     
-    var namesOfFieldsInOrder = [("Display Name", TypeOfField.displayName), ("Real Name",TypeOfField.realName), ("Gender",TypeOfField.gender), ("Birthday", TypeOfField.birthday), ("Religion", TypeOfField.religion), ("Ethnicity",TypeOfField.ethnicity), ("Height",TypeOfField.height), ("Figure",TypeOfField.figure), ("Marital Status", TypeOfField.maritalStatus), ("Occupation", TypeOfField.occupation),("Location", TypeOfField.location), ("About Me",TypeOfField.aboutMe)]
-    
-    
     func initData() {
         retrieveProfile()
         retrieveChoices()

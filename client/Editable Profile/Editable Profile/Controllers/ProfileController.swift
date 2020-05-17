@@ -8,8 +8,23 @@
 
 import UIKit
 
-class ProfileController: UIViewController {
+@objc extension ProfileController {
+    func editButtonTapped(notification: NSNotification) {
+        guard let recievedObject = notification.object as? [String: Any],let fieldType = recievedObject["FieldType"] as? TypeOfField, let fieldName = recievedObject["FieldName"] as? String, let fieldValue = recievedObject["FieldValue"] as? String else { return }
+        
+        switch fieldType {
+        case .displayName, .realName, .aboutMe, .occupation:
+            let textEditController = TextEditController(fieldName: fieldName, fieldValue: fieldValue, field: fieldType)
+            navigationController?.pushViewController(textEditController, animated: true)
+        default:
+            print("hi")
+        }
+        
+    }
+}
 
+class ProfileController: UIViewController {
+    
     var profileView: ProfileView?
     var viewModel = ProfileViewModel()
     
@@ -25,8 +40,11 @@ class ProfileController: UIViewController {
         // Do any additional setup after loading the view.
         profileView?.setupView()
         viewModel.initData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editButtonTapped), name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName), object: nil)
+        
     }
-
-
+    
+    
 }
 
