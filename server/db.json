@@ -1,19 +1,19 @@
 {
   "profile": {
-    "aboutMe": "I like doing things and going places, dogs, food, cooking. I like outdoor stuff.",
-    "ethnicity": "Asian",
-    "city": "Abidjan",
-    "religion": "Atheist",
-    "occupation": "Software Engineer",
-    "birthday": "01/01/1984",
+    "lon": "3°11'W",
+    "city": "Edinburgh",
     "figure": "Slim",
-    "lat": "5°19'N",
-    "gender": "Male",
-    "displayName": "Tony Stark Jr",
-    "lon": "4°02'W",
+    "aboutMe": "I like doing things and going places, dogs, food, cooking. I like outdoor stuff.",
     "maritalStatus": "Single",
+    "occupation": "Software Engineer",
+    "ethnicity": "Asian",
+    "birthday": "01/01/1984",
+    "religion": "Atheist",
+    "displayName": "Tony Stark Jr",
     "realName": "Mr Tester Man II",
-    "height": 5.699999809265137
+    "gender": "Male",
+    "height": 5.699999809265137,
+    "lat": "55°57'N"
   },
   "single_choice_attributes": {
     "gender": [

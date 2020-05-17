@@ -13,7 +13,7 @@ import os.log
     func saveTapped() {
         let profile = viewModel?.profile
         
-        if let newText = textEditView?.fieldTextfield.text {
+        if let newText = textEditView?.fieldTextfield.text, !newText.isEmpty {
             switch field {
             case .displayName:
                 profile?.displayName = newText
@@ -26,9 +26,13 @@ import os.log
             default:
                 os_log("This code should never be reachable, check type of field sent")
             }
+            viewModel?.updateProfile()
+            navigationController?.popViewController(animated: true)
+        } else {
+            let alertController = UIAlertController(title: StaticContent.emptyTextAlertTitle, message: StaticContent.emptyTextAlertMessage, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true)
         }
-        viewModel?.updateProfile()
-        navigationController?.popViewController(animated: true)
     }
 }
 
