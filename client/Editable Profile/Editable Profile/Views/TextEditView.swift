@@ -44,11 +44,7 @@ class TextEditView: UIView {
     func setupView() {
         backgroundColor = .white
         addSubviews(views: fieldLabel, fieldTextfield)
-        //  addSubview(fieldLabel)
-        //  addSubview(fieldTextfield)
-        
-        print(subviews.count)
-        
+
         setupConstraints()
     }
     

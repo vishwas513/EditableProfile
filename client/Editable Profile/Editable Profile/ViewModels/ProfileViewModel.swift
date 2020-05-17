@@ -72,7 +72,8 @@ final class ProfileViewModel {
         do {
             profileModel = try jsonDecoder.decode(ProfileModel.self, from: data)
         } catch {
-            os_log("Error with parsing location")
+            os_log("Error with parsing profile")
+            print(error)
         }
         return profileModel
     }
@@ -143,7 +144,7 @@ final class ProfileViewModel {
     func retrieveProfile() {
         let urlString = "http://localhost:3000/profile"
         if let url = URL(string: urlString) {
-            networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .profile), completion: {
+            networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .getProfile), completion: {
                 [weak self] result in
                 
                 switch result {
@@ -194,7 +195,45 @@ final class ProfileViewModel {
         case .aboutMe:
             valueForField = profile.aboutMe
         }
-     
+        
         return valueForField
+    }
+    
+    func updateProfile() {
+        let urlString = "http://localhost:3000/profile"
+        
+        if let url = URL(string: urlString) {
+            let data = buildObjectForPutRequest()
+            networkManager.put(urlRequest: networkManager.buildRequest(url: url, endpoint: .putProfile, payload: data), completion: { result in
+                print(result)
+            })
+        }
+    }
+    
+    func buildObjectForPutRequest() -> Data {
+        if let profile = profile {
+            let dataDictionary: [String:Any] = [
+                "displayName": profile.displayName,
+                "realName": profile.realName,
+                "gender": profile.gender,
+                "ethnicity": profile.ethnicity,
+                "birthday": profile.birthday,
+                "religion": profile.religion,
+                "figure": profile.figure,
+                "maritalStatus": profile.maritalStatus,
+                "aboutMe": profile.aboutMe,
+                "height": profile.height,
+                "occupation": profile.occupation,
+                "location": profile.location,
+            ]
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: dataDictionary)
+                return jsonData
+            } catch {
+                os_log("Could not convert jsonObject to data for put, check viewModel")
+            }
+        }
+        return Data()
     }
 }

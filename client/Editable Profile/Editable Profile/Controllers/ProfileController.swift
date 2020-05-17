@@ -14,8 +14,9 @@ import UIKit
         
         switch fieldType {
         case .displayName, .realName, .aboutMe, .occupation:
-            let textEditController = TextEditController(fieldName: fieldName, fieldValue: fieldValue, field: fieldType)
+            let textEditController = TextEditController(fieldName: fieldName, fieldValue: fieldValue, field: fieldType, viewModel: viewModel)
             navigationController?.pushViewController(textEditController, animated: true)
+            profileView = nil
         default:
             print("hi")
         }
@@ -43,6 +44,10 @@ class ProfileController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(editButtonTapped), name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName), object: nil)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.retrieveProfile()
     }
     
     

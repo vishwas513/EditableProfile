@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import os.log
 
 @objc extension TextEditController {
     func saveTapped() {
-        //let profile = viewModel.retriveProfile
+        let profile = viewModel?.profile
         
-//        switch field {
-//        case .displayName:
-//            profile.displayName = textEditView?.fieldTextfield.text
-//        case .realName:
-//            profile.realName = textEditView?.fieldTextfield.text
-//        case .occupation:
-//            profile.occupation = textEditView?.fieldTextfield.text
-//        case .aboutMe:
-//            profile.aboutMe = textEditView?.fieldTextfield.text
-//        default:
-//            print("hi")
-//        }
-//        navigationController?.popViewController(animated: true)
+        if let newText = textEditView?.fieldTextfield.text {
+            switch field {
+            case .displayName:
+                profile?.displayName = newText
+            case . realName:
+                profile?.realName = newText
+            case .occupation:
+                profile?.occupation = newText
+            case .aboutMe:
+                profile?.aboutMe = newText
+            default:
+                os_log("This code should never be reachable, check type of field sent")
+            }
+        }
+        viewModel?.updateProfile()
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -35,13 +39,14 @@ class TextEditController: UIViewController {
     var fieldValue: String?
     var field: TypeOfField?
     
-    var viewModel = ProfileViewModel()
+    var viewModel:ProfileViewModel?
     
-    init(fieldName: String, fieldValue: String, field: TypeOfField) {
+    init(fieldName: String, fieldValue: String, field: TypeOfField, viewModel: ProfileViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.fieldName = fieldName
         self.fieldValue = fieldValue
         self.field = field
+        self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
@@ -59,15 +64,4 @@ class TextEditController: UIViewController {
         navigationItem.rightBarButtonItem = saveButton
         // Do any additional setup after loading the view.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

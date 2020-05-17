@@ -17,7 +17,7 @@ final class NetworkManager {
     func get(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {
             data, response, error in
-          
+            
             if let error = error {
                 completion(.failure(error))
             }
@@ -29,13 +29,35 @@ final class NetworkManager {
         task.resume()
     }
     
-    func buildRequest(url: URL, endpoint: Endpoint) -> URLRequest {
+    func put(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
+        let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {
+            data, response, error in
+            
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            if let data = data {
+                completion(.success(data))
+            }
+        })
+        task.resume()
+    }
+    
+    func buildRequest(url: URL, endpoint: Endpoint, payload: Data? = nil) -> URLRequest {
+        var request = URLRequest(url: url)
         
         switch endpoint {
-        case .singleChoiceAttributes, .location, .profile:
-            var request = URLRequest(url: url)
+        case .singleChoiceAttributes, .location, .getProfile:
             request.httpMethod = HttpMethod.get.rawValue
-            return request
+        case .putProfile:
+            if let payload = payload {
+                request.httpMethod = HttpMethod.put.rawValue
+                request.httpBody = payload
+                request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
+                request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept") 
+            }
         }
+        return request
     }
 }
