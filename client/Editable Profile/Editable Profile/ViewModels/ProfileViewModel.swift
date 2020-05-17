@@ -11,7 +11,7 @@ import os.log
 
 final class ProfileViewModel {
     
-    weak var singleAttributeChoices: SingleChoiceAttribute?
+    var singleAttributeChoices: SingleChoiceAttribute?
     var locationList: [Location]?
     var networkManager = NetworkManager.shared
     var profileView: ProfileView?
@@ -44,13 +44,13 @@ final class ProfileViewModel {
     }
     
     
-    func parserChoice(data: Data) -> SingleChoiceAttribute? {
+    func parseChoice(data: Data) -> SingleChoiceAttribute? {
         let jsonDecoder = JSONDecoder()
         var choices : SingleChoiceAttribute?
         do {
             choices = try jsonDecoder.decode(SingleChoiceAttribute.self, from: data)
         } catch {
-            os_log("Error with parsing location")
+            os_log("Error with parsing choices")
         }
         return choices
     }
@@ -87,7 +87,9 @@ final class ProfileViewModel {
                 switch result {
                 case .success(let data):
                     if let strongSelf = self {
-                        strongSelf.singleAttributeChoices = strongSelf.parserChoice(data: data)
+                        if let choices = strongSelf.parseChoice(data: data) {
+                            strongSelf.singleAttributeChoices = choices
+                        }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

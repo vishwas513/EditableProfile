@@ -10,8 +10,11 @@ import Foundation
 
 struct StaticContent {
     static let editButtonText = "Edit your picture"
-    static let editableOptionCellId = "cell"
+    static let editableOptionCellId = "profileCell"
+    static let selectionScreenCellId = "selectionCell"
+    
     static let gotoDetailScreenNotificationName = "gotoDetailScreenNotificationName"
+    static let gotoSelectionScreenNotificationName = "gotoSelectionScreenNotificationName"
     
     // Using the tableView in a very static way
     static let numberOfEditableOptions: Int = 12

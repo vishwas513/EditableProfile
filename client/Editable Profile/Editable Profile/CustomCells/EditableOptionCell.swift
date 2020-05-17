@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 @objc extension EditableOptionCell {
     func editButtonTapped(sender: UIButton) {
@@ -19,9 +20,11 @@ import UIKit
             payload = ["FieldType": selectedItemType, "FieldName": fieldName, "FieldValue": fieldValue]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName) , object: payload)
             }
-            
+        case .gender, .ethnicity, .religion, .figure, .maritalStatus:
+            payload = ["FieldType": selectedItemType]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName) , object: payload)
         default:
-            print("g")
+            os_log("This code is unreachable")
         }
     }
 }
