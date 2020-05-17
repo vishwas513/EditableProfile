@@ -1,23 +1,22 @@
 {
-
   "profile": {
-    "id": "1",
-    "displayName": "Tester Man",
-    "realName": "Mr Tester Man II",
-    "gender": "Male",
-    "ethnicity": "Asian",
-    "birthday" : "01/01/1984",
-    "religion": "Atheist",
-    "figure": "Slim",
-    "maritalStatus": "Single",
     "aboutMe": "I like doing things and going places, dogs, food, cooking. I like outdoor stuff.",
-    "height": 5.7,
+    "ethnicity": "Asian",
+    "city": "Abidjan",
+    "religion": "Atheist",
     "occupation": "Software Engineer",
-    "location": "Atlanta"
+    "birthday": "01/01/1984",
+    "figure": "Slim",
+    "lat": "5°19'N",
+    "gender": "Male",
+    "displayName": "Tony Stark Jr",
+    "lon": "4°02'W",
+    "maritalStatus": "Single",
+    "realName": "Mr Tester Man II",
+    "height": 5.699999809265137
   },
-
   "single_choice_attributes": {
-      "gender": [
+    "gender": [
       {
         "id": "8f9d76ad-2c6b-4a98-8496-6165a2770a5e",
         "name": "Male"
@@ -160,7 +159,6 @@
       }
     ]
   },
-
   "cities": [
     {
       "lat": "56°09'N",
