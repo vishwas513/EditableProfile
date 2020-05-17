@@ -42,7 +42,7 @@ class SelectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(selectionMade), name: NSNotification.Name(rawValue: "selectPopforNavController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectionMade), name: NSNotification.Name(rawValue: StaticContent.selectPopforNavControllerNotificationName), object: nil)
     }
 }
 

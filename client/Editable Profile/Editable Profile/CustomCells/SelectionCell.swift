@@ -19,7 +19,7 @@ class SelectionCell: UITableViewCell {
     
     var checkMark: UIImageView = {
         var imageView = UIImageView()
-        imageView.image = UIImage(named: "pencil")
+        imageView.image = UIImage(named: "checkmark")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isHidden = true
         return imageView
@@ -48,8 +48,8 @@ class SelectionCell: UITableViewCell {
             
             checkMark.centerYAnchor.constraint(equalTo: centerYAnchor),
             checkMark.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            checkMark.widthAnchor.constraint(equalToConstant: 30),
-            checkMark.heightAnchor.constraint(equalToConstant: 30),
+            checkMark.widthAnchor.constraint(equalToConstant: 20),
+            checkMark.heightAnchor.constraint(equalToConstant: 20),
         ])
         
     }

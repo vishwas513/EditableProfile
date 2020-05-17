@@ -21,36 +21,55 @@ extension SelectionView: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StaticContent.selectionScreenCellId) as? SelectionCell else { return UITableViewCell() }
         cell.selectionLabel.text = list?[indexPath.row] ?? ""
         
-//        if cell.selectionLabel.text == currentSelection {
-//            cell.checkMark.isHidden = false
-//        }
-        
+        if let profile = viewModel?.profile {
+            var currentSelection: String?
+            switch field {
+            case .gender:
+                currentSelection = profile.gender
+            case .ethnicity:
+                currentSelection = profile.ethnicity
+            case .religion:
+                currentSelection = profile.religion
+            case .figure:
+                currentSelection = profile.figure
+            case .maritalStatus:
+                currentSelection = profile.maritalStatus
+            default:
+                currentSelection = ""
+                os_log("This code should not be reachable")
+                
+            }
+            
+            if cell.selectionLabel.text == currentSelection {
+                cell.checkMark.isHidden = false
+            }
+        }
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     //   let profile = profileviewModel.retriveProfile
+        let profile = viewModel?.profile
         
-//        switch field {
-//        case .gender:
-//            profile.gender = viewModel?.datasource?[indexPath.row]
-//        case .ethnicity:
-//            profile.ethnicity = viewModel?.datasource?[indexPath.row]
-//        case .religion:
-//            profile.religion = viewModel?.datasource?[indexPath.row]
-//        case .figure:
-//            profile.figure = viewModel?.datasource?[indexPath.row]
-//        case .maritalStatus:
-//            profile.maritalStatus = viewModel?.datasource?[indexPath.row]
-//
-//        default:
-//            os_log("Check SelectionView, update not working for type")
-//        }
-        
-     //   CoreDataUpdateOps.shared.updateProfile(profile: profile)
-        
- //       NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "selectPopforNavController"), object: nil))
-        
+        if let list = list {
+            switch field {
+            case .gender:
+                profile?.gender = list[indexPath.row]
+            case .ethnicity:
+                profile?.ethnicity = list[indexPath.row]
+            case .religion:
+                profile?.religion = list[indexPath.row]
+            case .figure:
+                profile?.figure = list[indexPath.row]
+            case .maritalStatus:
+                profile?.maritalStatus = list[indexPath.row]
+            default:
+                os_log("Check SelectionView, update not working for type")
+            }
+        }
+        viewModel?.updateProfile()
+
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: StaticContent.selectPopforNavControllerNotificationName), object: nil))
     }
 }
 
@@ -86,7 +105,7 @@ class SelectionView: UIView {
     func setupView() {
         backgroundColor = .white
         addSubview(selectionsTableView)
-    
+        
         setupTableView()
         setupConstraints()
     }
@@ -95,18 +114,7 @@ class SelectionView: UIView {
         selectionsTableView.dataSource = self
         selectionsTableView.delegate = self
         selectionsTableView.register(SelectionCell.self, forCellReuseIdentifier: StaticContent.selectionScreenCellId)
-//        let indexPath = IndexPath(row: viewModel?.selection ?? 0, section: 0)
-//        let cell = selectionsTableView.cellForRow(at: indexPath) as? SelectionCell
-//
-//        cell?.checkMark.isHidden = false
-    }
-    
-    func refreshSelection() {
-        
-        
-       // let indexPath = IndexPath(row: viewModel?.selection ?? 0, section: 0)
-       // let cell = selectionsTableView.cellForRow(at: indexPath) as? SelectionCell
-       // cell?.checkMark.isHidden = false
+        selectionsTableView.separatorStyle = .none
     }
     
     func setupConstraints() {

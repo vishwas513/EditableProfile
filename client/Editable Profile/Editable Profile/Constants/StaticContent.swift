@@ -15,6 +15,7 @@ struct StaticContent {
     
     static let gotoDetailScreenNotificationName = "gotoDetailScreenNotificationName"
     static let gotoSelectionScreenNotificationName = "gotoSelectionScreenNotificationName"
+    static let selectPopforNavControllerNotificationName = "selectPopforNavController"
     
     // Using the tableView in a very static way
     static let numberOfEditableOptions: Int = 12
