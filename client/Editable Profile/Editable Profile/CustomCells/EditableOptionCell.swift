@@ -7,10 +7,25 @@
 //
 
 import UIKit
+import os.log
 
 @objc extension EditableOptionCell {
-    func editButtonTapped() {
+    func editButtonTapped(sender: UIButton) {
+        let selectedItemType: TypeOfField = StaticContent.namesOfFieldsInOrder[sender.tag].1
+        var payload = [String: Any]()
         
+        switch selectedItemType {
+        case .displayName, .realName, .occupation, .aboutMe:
+            if let fieldName = fieldPlaceHolderLabel.text, let fieldValue = fieldLabel.text {
+            payload = ["FieldType": selectedItemType, "FieldName": fieldName, "FieldValue": fieldValue]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName) , object: payload)
+            }
+        case .gender, .ethnicity, .religion, .figure, .maritalStatus:
+            payload = ["FieldType": selectedItemType]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName) , object: payload)
+        default:
+            os_log("This code is unreachable")
+        }
     }
 }
 

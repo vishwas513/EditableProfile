@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E99F50A62470B74700D7CDE2 /* TextEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F50A52470B74700D7CDE2 /* TextEditController.swift */; };
+		E99F50A82470B7AD00D7CDE2 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F50A72470B7AD00D7CDE2 /* TextEditView.swift */; };
+		E99F50AA2470D00200D7CDE2 /* SelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F50A92470D00200D7CDE2 /* SelectionController.swift */; };
+		E99F50AC2470D05B00D7CDE2 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F50AB2470D05B00D7CDE2 /* SelectionView.swift */; };
+		E99F50AE2470D0BD00D7CDE2 /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F50AD2470D0BD00D7CDE2 /* SelectionCell.swift */; };
 		E9AC05F62470706700B8A839 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC05F52470706700B8A839 /* AppDelegate.swift */; };
 		E9AC05F82470706700B8A839 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC05F72470706700B8A839 /* SceneDelegate.swift */; };
 		E9AC05FA2470706700B8A839 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC05F92470706700B8A839 /* ProfileController.swift */; };
@@ -45,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E99F50A52470B74700D7CDE2 /* TextEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditController.swift; sourceTree = "<group>"; };
+		E99F50A72470B7AD00D7CDE2 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
+		E99F50A92470D00200D7CDE2 /* SelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionController.swift; sourceTree = "<group>"; };
+		E99F50AB2470D05B00D7CDE2 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		E99F50AD2470D0BD00D7CDE2 /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		E9AC05F22470706700B8A839 /* Editable Profile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Editable Profile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AC05F52470706700B8A839 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AC05F72470706700B8A839 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				E9AC05F92470706700B8A839 /* ProfileController.swift */,
+				E99F50A52470B74700D7CDE2 /* TextEditController.swift */,
+				E99F50A92470D00200D7CDE2 /* SelectionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +166,8 @@
 			children = (
 				E9B7C372247073A9003C6C8B /* ProfileView.swift */,
 				E9B7C375247074EF003C6C8B /* EditingView.swift */,
+				E99F50A72470B7AD00D7CDE2 /* TextEditView.swift */,
+				E99F50AB2470D05B00D7CDE2 /* SelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				E9B7C387247080DC003C6C8B /* EditableOptionCell.swift */,
+				E99F50AD2470D0BD00D7CDE2 /* SelectionCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -328,15 +343,20 @@
 				E9B7C37924707556003C6C8B /* TagSystem.swift in Sources */,
 				E9B7C39724708998003C6C8B /* Location.swift in Sources */,
 				E9AC05FA2470706700B8A839 /* ProfileController.swift in Sources */,
+				E99F50A82470B7AD00D7CDE2 /* TextEditView.swift in Sources */,
 				E9B7C39B24708998003C6C8B /* SingleChoiceAttribute.swift in Sources */,
 				E9AC05F62470706700B8A839 /* AppDelegate.swift in Sources */,
 				E9B7C39A24708998003C6C8B /* LocationList.swift in Sources */,
 				E9AC05F82470706700B8A839 /* SceneDelegate.swift in Sources */,
+				E99F50A62470B74700D7CDE2 /* TextEditController.swift in Sources */,
+				E99F50AC2470D05B00D7CDE2 /* SelectionView.swift in Sources */,
 				E9B7C39D24708998003C6C8B /* Figure.swift in Sources */,
 				E9B7C373247073A9003C6C8B /* ProfileView.swift in Sources */,
+				E99F50AE2470D0BD00D7CDE2 /* SelectionCell.swift in Sources */,
 				E9B7C39C24708998003C6C8B /* Ethnicity.swift in Sources */,
 				E9B7C38524707E04003C6C8B /* UIElementSizes.swift in Sources */,
 				E9B7C38124707770003C6C8B /* Enums.swift in Sources */,
+				E99F50AA2470D00200D7CDE2 /* SelectionController.swift in Sources */,
 				E9B7C39824708998003C6C8B /* MartialStatus.swift in Sources */,
 				E9B7C37C247075B7003C6C8B /* ProfileViewModel.swift in Sources */,
 			);

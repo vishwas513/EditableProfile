@@ -20,11 +20,20 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if let itemAtIndex = viewModel?.namesOfFieldsInOrder[indexPath.row] {
-            cell.fieldPlaceHolderLabel.text = itemAtIndex.0
-            cell.fieldLabel.text = viewModel?.getFieldValueFromIndex(fieldType: itemAtIndex.1)
+        let itemAtIndex = StaticContent.namesOfFieldsInOrder[indexPath.row]
+        cell.fieldPlaceHolderLabel.text = itemAtIndex.0
+        cell.fieldLabel.text = viewModel?.getFieldValueFromIndex(fieldType: itemAtIndex.1)
+        
+        if itemAtIndex.1 == .birthday || itemAtIndex.1 == .height {
+            cell.editButton.isHidden = true
+        } else {
+            cell.editButton.isHidden = false
         }
-       
+        
+        
+        cell.editButton.tag = indexPath.row
+        cell.selectionStyle = .none
+        
         return cell
     }
     

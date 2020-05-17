@@ -7,9 +7,34 @@
 //
 
 import UIKit
+import os.log
+
+@objc extension ProfileController {
+    func editButtonTappedForFreeText(notification: NSNotification) {
+        guard let recievedObject = notification.object as? [String: Any],let fieldType = recievedObject["FieldType"] as? TypeOfField, let fieldName = recievedObject["FieldName"] as? String, let fieldValue = recievedObject["FieldValue"] as? String else { return }
+        
+        switch fieldType {
+        case .displayName, .realName, .aboutMe, .occupation:
+            let textEditController = TextEditController(fieldName: fieldName, fieldValue: fieldValue, field: fieldType, viewModel: viewModel)
+            navigationController?.pushViewController(textEditController, animated: true)
+            profileView = nil
+        default:
+            os_log("This code should not be reached, check ProfileController")
+        }
+    }
+    
+    func editButtonTappedForSelection(notification: NSNotification) {
+        guard let recievedObject = notification.object as? [String: Any],let fieldType = recievedObject["FieldType"] as? TypeOfField else { return }
+        
+        let list = viewModel.getChoices(field: fieldType)
+        let selectionController = SelectionController(list: list, field: fieldType, viewModel: viewModel)
+        navigationController?.pushViewController(selectionController, animated: true)
+        profileView = nil
+    }
+}
 
 class ProfileController: UIViewController {
-
+    
     var profileView: ProfileView?
     var viewModel = ProfileViewModel()
     
@@ -25,8 +50,17 @@ class ProfileController: UIViewController {
         // Do any additional setup after loading the view.
         profileView?.setupView()
         viewModel.initData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForFreeText), name: NSNotification.Name(rawValue: StaticContent.gotoDetailScreenNotificationName), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForSelection), name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName), object: nil)
+        
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.retrieveProfile()
+    }
+    
+    
 }
 

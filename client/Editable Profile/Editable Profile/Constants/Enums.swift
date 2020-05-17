@@ -15,10 +15,12 @@ enum TypeOfField {
 enum Endpoint {
     case singleChoiceAttributes
     case location
-    case profile
+    case getProfile
+    case putProfile
 }
 
 enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
+    case put = "PUT"
 }
