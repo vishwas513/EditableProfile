@@ -1,17 +1,19 @@
 {
   "profile": {
-    "birthday": "01/01/1984",
-    "location": "Atlanta",
-    "occupation": "Software Engineer",
     "aboutMe": "I like doing things and going places, dogs, food, cooking. I like outdoor stuff.",
     "ethnicity": "Asian",
-    "maritalStatus": "Single",
-    "height": 5.699999809265137,
-    "gender": "Male",
-    "realName": "Mr Tester Man II",
+    "city": "Abidjan",
     "religion": "Atheist",
+    "occupation": "Software Engineer",
+    "birthday": "01/01/1984",
+    "figure": "Slim",
+    "lat": "5°19'N",
+    "gender": "Male",
     "displayName": "Tony Stark Jr",
-    "figure": "Slim"
+    "lon": "4°02'W",
+    "maritalStatus": "Single",
+    "realName": "Mr Tester Man II",
+    "height": 5.699999809265137
   },
   "single_choice_attributes": {
     "gender": [

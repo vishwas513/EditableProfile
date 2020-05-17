@@ -23,6 +23,10 @@ import os.log
         case .gender, .ethnicity, .religion, .figure, .maritalStatus:
             payload = ["FieldType": selectedItemType]
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName) , object: payload)
+            
+        case .location:
+            payload = ["FieldType": selectedItemType]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.gotoLocationScreenNotificationName), object: payload)
         default:
             os_log("This code is unreachable")
         }

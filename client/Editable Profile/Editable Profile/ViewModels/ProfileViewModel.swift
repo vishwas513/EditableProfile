@@ -189,7 +189,7 @@ final class ProfileViewModel {
         case .height:
             valueForField = processHeight(height: profile.height) ?? ""
         case .location:
-            valueForField = profile.location
+            valueForField = profile.city
         case .maritalStatus:
             valueForField = profile.maritalStatus
         case .occupation:
@@ -226,7 +226,9 @@ final class ProfileViewModel {
                 "aboutMe": profile.aboutMe,
                 "height": profile.height,
                 "occupation": profile.occupation,
-                "location": profile.location,
+                "city": profile.city,
+                "lat": profile.lat,
+                "lon": profile.lon
             ]
             
             do {
