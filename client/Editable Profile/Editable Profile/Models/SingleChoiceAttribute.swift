@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SingleChoiceAttribute: Decodable {
+final class SingleChoiceAttribute: Decodable {
     var gender: [Gender]
     var ethnicity: [Ethnicity]
     var religion: [Religion]

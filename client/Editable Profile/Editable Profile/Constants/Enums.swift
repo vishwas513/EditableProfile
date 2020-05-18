@@ -24,3 +24,7 @@ enum HttpMethod: String {
     case post = "POST"
     case put = "PUT"
 }
+
+enum ErrorTypes {
+    case serverNotResponding
+}
