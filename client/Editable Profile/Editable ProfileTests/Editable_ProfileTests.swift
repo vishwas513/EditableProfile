@@ -38,7 +38,6 @@ class Editable_ProfileTests: XCTestCase {
     }
     
     func testGetChoices() {
-        //The scope of this test is networkManager, retriveChoices, parseChoices
         var listOfChoices = viewModel?.getChoices(field: .gender)
         XCTAssertEqual(listOfChoices?.count, 0)
         
@@ -46,11 +45,90 @@ class Editable_ProfileTests: XCTestCase {
         sleep(2)
         listOfChoices = viewModel?.getChoices(field: .gender)
         XCTAssertEqual(listOfChoices?.count, 3)
+    }
+    
+    func testGenderOptions() {
+        viewModel?.retrieveChoices()
+        sleep(2)
         
+        let listOfChoices = viewModel?.getChoices(field: .gender)
         XCTAssertNotNil(listOfChoices?.contains("Male"))
         XCTAssertNotNil(listOfChoices?.contains("Female"))
         XCTAssertNotNil(listOfChoices?.contains("Other"))
     }
+    
+    func testEthnicityOptions() {
+        viewModel?.retrieveChoices()
+        sleep(2)
+        
+        let listOfChoices = viewModel?.getChoices(field: .ethnicity)
+        
+        XCTAssertEqual(listOfChoices?.count, 11)
+        
+        XCTAssertNotNil(listOfChoices?.contains("White"))
+        XCTAssertNotNil(listOfChoices?.contains("South Asian"))
+        XCTAssertNotNil(listOfChoices?.contains("South East Asian"))
+        XCTAssertNotNil(listOfChoices?.contains("Mixed"))
+        XCTAssertNotNil(listOfChoices?.contains("Black"))
+        XCTAssertNotNil(listOfChoices?.contains("Arabic"))
+        XCTAssertNotNil(listOfChoices?.contains("Hispanic"))
+        XCTAssertNotNil(listOfChoices?.contains("Latino"))
+        XCTAssertNotNil(listOfChoices?.contains("Native American"))
+        XCTAssertNotNil(listOfChoices?.contains("Pacific Islander"))
+        XCTAssertNotNil(listOfChoices?.contains("Other"))
+    }
+    
+    func testReligionOptions() {
+        viewModel?.retrieveChoices()
+        sleep(2)
+        
+        let listOfChoices = viewModel?.getChoices(field: .religion)
+        
+        XCTAssertEqual(listOfChoices?.count, 10)
+        
+        XCTAssertNotNil(listOfChoices?.contains("Agnostic"))
+        XCTAssertNotNil(listOfChoices?.contains("Atheist"))
+        XCTAssertNotNil(listOfChoices?.contains("Buddhist"))
+        XCTAssertNotNil(listOfChoices?.contains("Christian"))
+        XCTAssertNotNil(listOfChoices?.contains("Hindu"))
+        XCTAssertNotNil(listOfChoices?.contains("Islam"))
+        XCTAssertNotNil(listOfChoices?.contains("Jewish"))
+        XCTAssertNotNil(listOfChoices?.contains("Shinto"))
+        XCTAssertNotNil(listOfChoices?.contains("Sikh"))
+        XCTAssertNotNil(listOfChoices?.contains("Other"))
+        
+    }
+    
+    func testFigureOptions() {
+        viewModel?.retrieveChoices()
+        sleep(2)
+        
+        let listOfChoices = viewModel?.getChoices(field: .figure)
+        
+        XCTAssertEqual(listOfChoices?.count, 5)
+        
+        XCTAssertNotNil(listOfChoices?.contains("Slim"))
+        XCTAssertNotNil(listOfChoices?.contains("Normal"))
+        XCTAssertNotNil(listOfChoices?.contains("Athletic"))
+        XCTAssertNotNil(listOfChoices?.contains("A few extra kilos"))
+        XCTAssertNotNil(listOfChoices?.contains("More to love"))
+    }
+    
+    func testMartitalStatusOptions() {
+        viewModel?.retrieveChoices()
+        sleep(2)
+        
+        let listOfChoices = viewModel?.getChoices(field: .maritalStatus)
+        
+        XCTAssertEqual(listOfChoices?.count, 4)
+        
+        XCTAssertNotNil(listOfChoices?.contains("Never Married"))
+        XCTAssertNotNil(listOfChoices?.contains("Divorced"))
+        XCTAssertNotNil(listOfChoices?.contains("Widower"))
+        XCTAssertNotNil(listOfChoices?.contains("Separated"))
+    }
+    
+    
     
     func testParseChoice() {
         XCTAssertNil(viewModel?.singleAttributeChoices)
@@ -120,7 +198,4 @@ class Editable_ProfileTests: XCTestCase {
         XCTAssertEqual(profile?.occupation, viewModel?.getFieldValueFromIndex(fieldType: .occupation))
         XCTAssertEqual(profile?.realName, viewModel?.getFieldValueFromIndex(fieldType: .realName))
     }
-    
-    
-    
 }
