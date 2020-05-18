@@ -53,7 +53,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     
     func editPictureButtonTapped() {
         let alertController = UIAlertController(title: "Choose", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        
+        alertController.popoverPresentationController?.sourceView = profileView?.pictureEditButton
         
         alertController.addAction(UIAlertAction(title: "Select From Gallery", style: .default, handler: {
             [weak self]  _ in
