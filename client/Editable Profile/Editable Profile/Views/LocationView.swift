@@ -8,6 +8,7 @@
 
 import UIKit
 
+// The tableView functions
 extension LocationView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return autoCompleteEntries.count
@@ -35,6 +36,7 @@ extension LocationView: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// For autocomplete
 extension LocationView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -74,7 +76,7 @@ class LocationView: UIView {
         textfield.translatesAutoresizingMaskIntoConstraints = false
         textfield.layer.borderColor = UIColor.gray.cgColor
         textfield.layer.borderWidth = 0.5
-        textfield.placeholder = "Start typing..."
+        textfield.placeholder = StaticContent.locationTextFieldPlaceholder
         return textfield
     }()
     
@@ -119,6 +121,7 @@ class LocationView: UIView {
             locationTextfield.centerXAnchor.constraint(equalTo: centerXAnchor),
             locationTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIElementSizes.standardPadding),
             locationTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIElementSizes.standardPadding),
+            locationTextfield.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
             
             locationTableView.topAnchor.constraint(equalTo: locationTextfield.bottomAnchor, constant: UIElementSizes.standardPadding),
             locationTableView.centerXAnchor.constraint(equalTo: centerXAnchor),

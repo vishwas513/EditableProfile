@@ -14,12 +14,11 @@ import UIKit
     }
 }
 
-class LocationController: UIViewController {
+final class LocationController: UIViewController {
     
     var locationView: LocationView?
     var fieldType: TypeOfField?
     var viewModel: ProfileViewModel?
-    
     
     init(fieldType: TypeOfField, viewModel: ProfileViewModel) {
         super.init(nibName: nil, bundle: nil)

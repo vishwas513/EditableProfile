@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-import UIKit
 import os.log
 
 extension SelectionView: UITableViewDataSource, UITableViewDelegate {
@@ -87,9 +85,10 @@ class SelectionView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //setupView()
+
     }
     
+    // The design is such that, its reusuble for any kind of selection type
     init(field: TypeOfField, viewModel: ProfileViewModel, list: [String]) {
         self.init()
         self.field = field

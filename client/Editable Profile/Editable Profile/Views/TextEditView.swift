@@ -15,19 +15,22 @@ class TextEditView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
         label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: UIElementSizes.sizeOfPlaceholderText)
         return label
     }()
     
-    var fieldTextfield: UITextField = {
-        var textfield = UITextField()
+    var fieldTextfield: UITextView = {
+        var textfield = UITextView()
         textfield.translatesAutoresizingMaskIntoConstraints = false
-        textfield.backgroundColor = .lightGray
+        textfield.backgroundColor = .black
+        textfield.textColor = .white
+        textfield.layer.cornerRadius = UIElementSizes.cornerRadius
+        textfield.clipsToBounds = true
         return textfield
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //  setupView()
     }
     
     init(fieldName: String, fieldValue: String) {
@@ -59,6 +62,7 @@ class TextEditView: UIView {
             fieldTextfield.centerXAnchor.constraint(equalTo: centerXAnchor),
             fieldTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             fieldTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            fieldTextfield.heightAnchor.constraint(equalToConstant: UIElementSizes.screenWidth/4),
         ])
     }
 }

@@ -15,7 +15,7 @@ import UIKit
     }
 }
 
-class SelectionController: UIViewController {
+final class SelectionController: UIViewController {
     
     var selectionView: SelectionView?
     var field: TypeOfField?

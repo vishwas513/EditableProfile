@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileModel: Decodable {
+final class ProfileModel: Decodable {
     var displayName: String
     var realName: String
     var gender: String

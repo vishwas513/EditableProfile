@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectionCell: UITableViewCell {
+final class SelectionCell: UITableViewCell {
     
     var selectionLabel: UILabel = {
         var label = UILabel()
@@ -17,6 +17,7 @@ class SelectionCell: UITableViewCell {
         return label
     }()
     
+    //This is to show which field is selected
     var checkMark: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "checkmark")
@@ -42,14 +43,14 @@ class SelectionCell: UITableViewCell {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             selectionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            selectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            selectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIElementSizes.standardPadding),
             selectionLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2),
-            selectionLabel.heightAnchor.constraint(equalToConstant: 20),
+            selectionLabel.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
             
             checkMark.centerYAnchor.constraint(equalTo: centerYAnchor),
-            checkMark.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            checkMark.widthAnchor.constraint(equalToConstant: 20),
-            checkMark.heightAnchor.constraint(equalToConstant: 20),
+            checkMark.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIElementSizes.standardPadding),
+            checkMark.widthAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
+            checkMark.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
         ])
         
     }

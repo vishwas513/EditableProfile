@@ -14,9 +14,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         
         if let originalImage = info[.originalImage] as? UIImage {
             profileView?.pictureManagementView.image = originalImage
-            
-            
-            
+    
             picker.dismiss(animated: true, completion: nil)
         }
     }
@@ -69,6 +67,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         
         alertController.addAction(UIAlertAction(title: "Take a picture ", style: .default, handler: {
             [weak self]  _ in
+            // This in theory should work on a real device, but please note that it hasn't been tested
             #if !targetEnvironment(simulator)
             if let strongSelf = self {
                 strongSelf.imagePicker.sourceType = UIImagePickerController.SourceType.camera
@@ -82,11 +81,24 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
         }))
         
-        present(alertController, animated: true)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func handleError(notification: NSNotification) {
+        guard let recievedObject = notification.object as? [String: Any],let _ = recievedObject["TypeOfError"] as? ErrorTypes, let errorMessage = recievedObject["ErrorMessage"] as? String else { return }
+        
+        let alertController = UIAlertController(title: StaticContent.serverNotRespondingAlertTitle, message: errorMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
     }
 }
 
-class ProfileController: UIViewController {
+final class ProfileController: UIViewController {
     
     var profileView: ProfileView?
     var viewModel = ProfileViewModel()
@@ -110,6 +122,8 @@ class ProfileController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForSelection), name: NSNotification.Name(rawValue: StaticContent.gotoSelectionScreenNotificationName), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(editButtonTappedForLocation), name: NSNotification.Name(rawValue: StaticContent.gotoLocationScreenNotificationName), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleError), name: NSNotification.Name(rawValue: StaticContent.errorNotification), object: nil)
         
         profileView?.pictureEditButton.addTarget(self, action: #selector(editPictureButtonTapped), for: .touchUpInside)
         

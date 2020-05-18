@@ -14,6 +14,7 @@ final class NetworkManager {
     private init() {}
     static let shared = NetworkManager()
     
+    // simple get method, takes in a request , gives data or error
     func get(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {
             data, response, error in
@@ -29,6 +30,7 @@ final class NetworkManager {
         task.resume()
     }
     
+    //put seemed like the best choice, since 'update' profile
     func put(urlRequest: URLRequest, completion: @escaping (Result<Data, Error>) -> ()) {
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {
             data, response, error in
@@ -44,6 +46,7 @@ final class NetworkManager {
         task.resume()
     }
     
+    //builds the request based on endpoint, with optional payload parameter for put only
     func buildRequest(url: URL, endpoint: Endpoint, payload: Data? = nil) -> URLRequest {
         var request = URLRequest(url: url)
         
