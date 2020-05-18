@@ -221,7 +221,18 @@ final class ProfileViewModel {
         
         if let url = URL(string: urlString) {
             let data = buildObjectForPutRequest()
-            networkManager.put(urlRequest: networkManager.buildRequest(url: url, endpoint: .putProfile, payload: data), completion: { _ in
+            networkManager.put(urlRequest: networkManager.buildRequest(url: url, endpoint: .putProfile, payload: data), completion: { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    if let strongSelf = self {
+                        DispatchQueue.main.async {
+                            strongSelf.processError(error: error)
+                        }
+                         return
+                    }
+                case .success(_):
+                    break
+                }
             })
         }
     }
