@@ -79,7 +79,7 @@ final class ProfileViewModel {
         return profileModel
     }
     
-    // There functions, performs networking and updates the viewmodel element in a memory safe way if successful, if error shows an error and exits scope
+    // There functions, performs networking and updates the viewmodel element in a memory safe way if successful, if failed displays an error and exits scope
     func retrieveChoices() {
         let urlString = "http://localhost:3000/single_choice_attributes"
         if let url = URL(string: urlString) {
@@ -162,7 +162,8 @@ final class ProfileViewModel {
     
     // This function formats the height into a Ft, in format
     func processHeight(height: Float) -> String? {
-        let heightString = NSString(format: "%.1f", height)
+        
+        let heightString = NSString(format: "%.2f", height)
         let heightComponents = heightString.components(separatedBy: ".")
         var resultString = String()
         
