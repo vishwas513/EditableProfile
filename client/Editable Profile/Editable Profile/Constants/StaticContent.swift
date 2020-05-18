@@ -14,7 +14,7 @@ struct StaticContent {
     static let editButtonText = "Edit your picture"
     static let editableOptionCellId = "profileCell"
     static let selectionScreenCellId = "selectionCell"
-    static let locationTextFieldPlaceholder = "locationTextFieldPlaceholder"
+    static let locationTextFieldPlaceholder = "Start typing..."
     
     // Notification names
     static let gotoDetailScreenNotificationName = "gotoDetailScreenNotificationName"
