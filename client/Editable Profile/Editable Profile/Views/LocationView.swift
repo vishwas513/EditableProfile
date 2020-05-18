@@ -121,7 +121,6 @@ class LocationView: UIView {
             locationTextfield.centerXAnchor.constraint(equalTo: centerXAnchor),
             locationTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIElementSizes.standardPadding),
             locationTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIElementSizes.standardPadding),
-            locationTextfield.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
             
             locationTableView.topAnchor.constraint(equalTo: locationTextfield.bottomAnchor, constant: UIElementSizes.standardPadding),
             locationTableView.centerXAnchor.constraint(equalTo: centerXAnchor),
