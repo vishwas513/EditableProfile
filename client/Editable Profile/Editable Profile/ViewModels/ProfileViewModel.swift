@@ -73,7 +73,6 @@ final class ProfileViewModel {
             profileModel = try jsonDecoder.decode(ProfileModel.self, from: data)
         } catch {
             os_log("Error with parsing profile")
-            print(error)
         }
         return profileModel
     }
@@ -92,9 +91,14 @@ final class ProfileViewModel {
                         }
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    if let strongSelf = self {
+                        DispatchQueue.main.async {
+                            strongSelf.processError(error: error)
+                        }
+                        return
+                        
+                    }
                 }
-                
             })
         }
     }
@@ -111,7 +115,12 @@ final class ProfileViewModel {
                         strongSelf.locationList = strongSelf.parserLocation(data: data)
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    if let strongSelf = self {
+                        DispatchQueue.main.async {
+                            strongSelf.processError(error: error)
+                        }
+                        return
+                    }
                 }
             })
         }
@@ -158,10 +167,16 @@ final class ProfileViewModel {
                             DispatchQueue.main.async {
                                 strongSelf.profileView?.editableOptionsTableView.reloadData()
                             }
+                             return
                         }
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    if let strongSelf = self {
+                        DispatchQueue.main.async {
+                            strongSelf.processError(error: error)
+                        }
+                         return
+                    }
                 }
             })
         }
@@ -206,8 +221,7 @@ final class ProfileViewModel {
         
         if let url = URL(string: urlString) {
             let data = buildObjectForPutRequest()
-            networkManager.put(urlRequest: networkManager.buildRequest(url: url, endpoint: .putProfile, payload: data), completion: { result in
-                print(result)
+            networkManager.put(urlRequest: networkManager.buildRequest(url: url, endpoint: .putProfile, payload: data), completion: { _ in
             })
         }
     }
@@ -239,5 +253,10 @@ final class ProfileViewModel {
             }
         }
         return Data()
+    }
+    
+    func processError(error: Error) {
+        let payload = ["TypeOfError": ErrorTypes.serverNotResponding, "ErrorMessage":error.localizedDescription] as [String : Any]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.errorNotification), object: payload)
     }
 }
