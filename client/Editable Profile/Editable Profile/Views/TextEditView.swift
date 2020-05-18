@@ -31,7 +31,6 @@ class TextEditView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //  setupView()
     }
     
     init(fieldName: String, fieldValue: String) {

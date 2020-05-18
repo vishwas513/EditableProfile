@@ -10,6 +10,8 @@ import UIKit
 import os.log
 
 @objc extension TextEditController {
+    
+    // if Text is not empty, then start update process
     func saveTapped() {
         let profile = viewModel?.profile
         
@@ -36,7 +38,7 @@ import os.log
     }
 }
 
-class TextEditController: UIViewController {
+final class TextEditController: UIViewController {
     
     var textEditView: TextEditView?
     var fieldName: String?
@@ -66,6 +68,5 @@ class TextEditController: UIViewController {
         super.viewDidLoad()
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         navigationItem.rightBarButtonItem = saveButton
-        // Do any additional setup after loading the view.
     }
 }

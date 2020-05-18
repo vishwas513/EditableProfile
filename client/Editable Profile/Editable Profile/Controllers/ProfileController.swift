@@ -14,9 +14,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         
         if let originalImage = info[.originalImage] as? UIImage {
             profileView?.pictureManagementView.image = originalImage
-            
-            
-            
+    
             picker.dismiss(animated: true, completion: nil)
         }
     }
@@ -69,6 +67,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         
         alertController.addAction(UIAlertAction(title: "Take a picture ", style: .default, handler: {
             [weak self]  _ in
+            // This in theory should work on a real device, but please note that it hasn't been tested
             #if !targetEnvironment(simulator)
             if let strongSelf = self {
                 strongSelf.imagePicker.sourceType = UIImagePickerController.SourceType.camera
@@ -99,7 +98,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     }
 }
 
-class ProfileController: UIViewController {
+final class ProfileController: UIViewController {
     
     var profileView: ProfileView?
     var viewModel = ProfileViewModel()

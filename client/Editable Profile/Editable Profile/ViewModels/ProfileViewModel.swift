@@ -17,12 +17,14 @@ final class ProfileViewModel {
     var profileView: ProfileView?
     var profile: ProfileModel?
     
+    // This will trigger the downloads
     func initData() {
         retrieveProfile()
         retrieveChoices()
         retrieveLocations()
     }
     
+    // This function returns the choices for a choice type
     func getChoices(field: TypeOfField) -> [String] {
         var result = [String]()
         guard let choices = singleAttributeChoices else { return [] }
@@ -77,6 +79,7 @@ final class ProfileViewModel {
         return profileModel
     }
     
+    // There functions, performs networking and updates the viewmodel element in a memory safe way if successful, if error shows an error and exits scope
     func retrieveChoices() {
         let urlString = "http://localhost:3000/single_choice_attributes"
         if let url = URL(string: urlString) {
@@ -126,17 +129,38 @@ final class ProfileViewModel {
         }
     }
     
-    //    var retriveProfile: Profile {
-    //        return CoreDataGetOps.shared.getProfile()
-    //    }
+   func retrieveProfile() {
+       let urlString = "http://localhost:3000/profile"
+       if let url = URL(string: urlString) {
+           networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .getProfile), completion: {
+               [weak self] result in
+               
+               switch result {
+               case .success(let data):
+                   if let strongSelf = self {
+                       if let profileObject = strongSelf.parseProfile(data: data) {
+                           strongSelf.profile = profileObject
+                           
+                            // This is to avoid a race conition
+                           DispatchQueue.main.async {
+                               strongSelf.profileView?.editableOptionsTableView.reloadData()
+                           }
+                            return
+                       }
+                   }
+               case .failure(let error):
+                   if let strongSelf = self {
+                       DispatchQueue.main.async {
+                           strongSelf.processError(error: error)
+                       }
+                        return
+                   }
+               }
+           })
+       }
+   }
     
-    func processDateObject(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: date)
-        
-    }
-    
+    // This function formats the height into a Ft, in format
     func processHeight(height: Float) -> String? {
         let heightString = NSString(format: "%.1f", height)
         let heightComponents = heightString.components(separatedBy: ".")
@@ -152,36 +176,7 @@ final class ProfileViewModel {
         return resultString
     }
     
-    func retrieveProfile() {
-        let urlString = "http://localhost:3000/profile"
-        if let url = URL(string: urlString) {
-            networkManager.get(urlRequest: networkManager.buildRequest(url: url, endpoint: .getProfile), completion: {
-                [weak self] result in
-                
-                switch result {
-                case .success(let data):
-                    if let strongSelf = self {
-                        if let profileObject = strongSelf.parseProfile(data: data) {
-                            strongSelf.profile = profileObject
-                            
-                            DispatchQueue.main.async {
-                                strongSelf.profileView?.editableOptionsTableView.reloadData()
-                            }
-                             return
-                        }
-                    }
-                case .failure(let error):
-                    if let strongSelf = self {
-                        DispatchQueue.main.async {
-                            strongSelf.processError(error: error)
-                        }
-                         return
-                    }
-                }
-            })
-        }
-    }
-    
+    // Used by cell to get the right values
     func getFieldValueFromIndex(fieldType: TypeOfField) -> String {
         guard let profile = self.profile else { return "" }
         var valueForField = ""
@@ -216,6 +211,7 @@ final class ProfileViewModel {
         return valueForField
     }
     
+    // Able to use for all type of updates
     func updateProfile() {
         let urlString = "http://localhost:3000/profile"
         
@@ -237,6 +233,7 @@ final class ProfileViewModel {
         }
     }
     
+    // build object for put and convert into data block
     func buildObjectForPutRequest() -> Data {
         if let profile = profile {
             let dataDictionary: [String:Any] = [
@@ -266,6 +263,7 @@ final class ProfileViewModel {
         return Data()
     }
     
+    // Notification because, showing error is a UI acticity and should not be done in a viewModel
     func processError(error: Error) {
         let payload = ["TypeOfError": ErrorTypes.serverNotResponding, "ErrorMessage":error.localizedDescription] as [String : Any]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: StaticContent.errorNotification), object: payload)

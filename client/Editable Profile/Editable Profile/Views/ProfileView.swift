@@ -24,12 +24,12 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
         cell.fieldPlaceHolderLabel.text = itemAtIndex.0
         cell.fieldLabel.text = viewModel?.getFieldValueFromIndex(fieldType: itemAtIndex.1)
         
+        // Birthday and height should not be editable
         if itemAtIndex.1 == .birthday || itemAtIndex.1 == .height {
             cell.editButton.isHidden = true
         } else {
             cell.editButton.isHidden = false
         }
-        
         
         cell.editButton.tag = indexPath.row
         cell.selectionStyle = .none
@@ -42,7 +42,7 @@ extension ProfileView: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-class ProfileView: UIView {
+final class ProfileView: UIView {
     weak var viewModel: ProfileViewModel?
     
     var pictureManagementView: UIImageView = {
@@ -71,11 +71,6 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-    }
-    
-    init(viewModel: ProfileViewModel) {
-        self.init()
-        //  self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {

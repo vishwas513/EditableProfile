@@ -75,17 +75,17 @@ final class EditableOptionCell: UITableViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            fieldPlaceHolderLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            fieldPlaceHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            fieldPlaceHolderLabel.heightAnchor.constraint(equalToConstant: 20),
+            fieldPlaceHolderLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIElementSizes.standardPadding),
+            fieldPlaceHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIElementSizes.standardPadding),
+            fieldPlaceHolderLabel.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
             fieldPlaceHolderLabel.trailingAnchor.constraint(equalTo: editButton.leadingAnchor),
             
-            fieldLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            fieldLabel.topAnchor.constraint(equalTo: fieldPlaceHolderLabel.bottomAnchor, constant: 5),
-            fieldLabel.heightAnchor.constraint(equalToConstant: 20),
+            fieldLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIElementSizes.standardPadding),
+            fieldLabel.topAnchor.constraint(equalTo: fieldPlaceHolderLabel.bottomAnchor, constant: UIElementSizes.standardPadding),
+            fieldLabel.heightAnchor.constraint(equalToConstant: UIElementSizes.sizeOfPlaceholderText),
             fieldLabel.trailingAnchor.constraint(equalTo: editButton.leadingAnchor),
             
-            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIElementSizes.standardPadding),
             editButton.leadingAnchor.constraint(equalTo: fieldPlaceHolderLabel.trailingAnchor),
             editButton.heightAnchor.constraint(equalToConstant: 40),
             editButton.widthAnchor.constraint(equalToConstant: 40),
