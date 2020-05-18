@@ -1,19 +1,19 @@
 {
   "profile": {
-    "birthday": "01/01/1984",
-    "figure": "Slim",
-    "displayName": "Tony Stark",
     "realName": "Mr Tester Man II",
-    "gender": "Other",
-    "maritalStatus": "Never Married",
-    "religion": "Atheist",
-    "occupation": "Software Engineer II",
-    "lat": "14°42'N",
-    "ethnicity": "Asian",
-    "city": "Dakar",
-    "lon": "17°27'W",
     "aboutMe": "I like doing things and going places, dogs, food, cooking. I like outdoor stuff.",
-    "height": 5.06
+    "maritalStatus": "Never Married",
+    "gender": "Male",
+    "height": 5.059999942779541,
+    "lat": "14°42'N",
+    "occupation": "Software Engineer II",
+    "city": "Dakar",
+    "displayName": "Tony Stark",
+    "birthday": "01/01/1984",
+    "lon": "17°27'W",
+    "religion": "Agnostic",
+    "figure": "Slim",
+    "ethnicity": "Mixed"
   },
   "single_choice_attributes": {
     "gender": [
