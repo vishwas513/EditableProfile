@@ -38,6 +38,7 @@ final class EditableOptionCell: UITableViewCell {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.font = UIFont.boldSystemFont(ofSize: UIElementSizes.sizeOfPlaceholderText)
         return label
     }()
     
